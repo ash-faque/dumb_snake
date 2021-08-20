@@ -52,5 +52,5 @@ app.get('/', function(req, res){
     res.sendFile(__dirname + '/public/index.html');
 });
 
-app.listen(PORT, () => console.log('listening...on ' + PORT))
+app.listen(PORT, () => console.log('listening on port: ' + PORT))
 module.exports = app
