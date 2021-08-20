@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const fs = require('fs')
+const PORT = process.env.PORT || 5000;
 
 // twitter
 const Twitter = require('twitter');
@@ -45,12 +46,11 @@ canvas.toBuffer((err, buff) => {
 
 
 
-
 // app routs
 app.use(express.static('public'))
 app.get('/', function(req, res){
     res.sendFile(__dirname + '/public/index.html');
 });
 
-app.listen(2020, () => console.log('listening...'))
+app.listen(PORT, () => console.log('listening...on ' + PORT))
 module.exports = app
