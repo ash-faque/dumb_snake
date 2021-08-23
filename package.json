@@ -1,11 +1,11 @@
 {
   "name": "dumb_snake",
   "version": "1.0.0",
-  "description": "Dumb snake democrate",
-  "main": "index.js",
+  "description": "dumb snake server",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -19,9 +19,11 @@
   "homepage": "https://github.com/ash-faque/dumb_snake#readme",
   "dependencies": {
     "canvas": "^2.8.0",
-    "deta": "^1.0.0",
+    "cron": "^1.8.2",
     "express": "^4.17.1",
     "twitter": "^1.7.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "dotenv": "^10.0.0"
+  }
 }
