@@ -19,11 +19,7 @@
   "homepage": "https://github.com/ash-faque/dumb_snake#readme",
   "dependencies": {
     "canvas": "^2.8.0",
-    "cron": "^1.8.2",
-    "express": "^4.17.1",
-    "twitter": "^1.7.1"
+    "express": "^4.17.1"
   },
-  "devDependencies": {
-    "dotenv": "^10.0.0"
-  }
+  "devDependencies": {}
 }
