@@ -34,7 +34,7 @@ const drawGame = (snake, apple, dead) => {
     ctx.fillRect(apple[0]*50, apple[1]*50, 50, 50)
 
     // save game
-    return canvas.toBuffer()
+    return { "buffer": canvas.toBuffer() }
 };
 
 
@@ -43,12 +43,8 @@ app.post('/draw', function(req, res){
     let snake = req.body.snake,
         apple = req.body.apple,
         dead = req.body.dead,
-        img = drawGame(snake, apple, dead);
-    res.writeHead(200, {
-            'Content-Type': 'image/png',
-            'Content-Length': img.length
-        });
-    res.end(img);
+        json = drawGame(snake, apple, dead);
+    res.json(json);
 });
 app.listen((process.env.PORT || 8080), () => {
     console.log('listening ...')
