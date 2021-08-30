@@ -1,7 +1,7 @@
 // server modules
-const express = require('express')
-const app = express()
-app.use(express.json())
+const express = require('express');
+const app = express();
+app.use(express.json());
 
 // canvas modules
 const { createCanvas } = require('canvas')
@@ -33,10 +33,8 @@ const drawGame = (snake, apple, dead) => {
     ctx.fillStyle = '#ee6a2d'
     ctx.fillRect(apple[0]*50, apple[1]*50, 50, 50)
 
-    // save game
-    return { "buffer": canvas.toBuffer() }
+    return { "buffer": canvas.toBuffer().toString('base64') }
 };
-
 
 // app routs
 app.post('/draw', function(req, res){
