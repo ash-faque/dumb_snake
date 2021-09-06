@@ -1,49 +1,24 @@
-// server modules
+// HEROKU SERVER //
 const express = require('express');
 const app = express();
 app.use(express.json());
 
-// canvas modules
-const { createCanvas } = require('canvas')
-const canvas = createCanvas(300, 300)
-const ctx = canvas.getContext('2d')
+const processGame = require('./processGame');
 
-// drawing ...
-const drawGame = (snake, apple, dead) => {
-    // draw canvas bg
-    ctx.fillStyle = '#166d00'
-    ctx.fillRect(0, 0, 300, 300)
-    ctx.fillStyle = '#2ad300'
-    for (let i = 0; i < 6; i++){
-        for (let j = 0; j < 6; j++){
-            if ((i + j) % 2 === 0){
-                ctx.fillRect(i*50, j*50, 50, 50)
-            }
-        }
-    }
-    // draw new snake
-    ctx.fillStyle = '#b527d8'
-    snake.forEach(cell => {
-        let i = cell[0],
-            j = cell[1],
-            to = cell[2];
-        ctx.fillRect(i*50, j*50, 50, 50)
-    });
-    // draw apple
-    ctx.fillStyle = '#ee6a2d'
-    ctx.fillRect(apple[0]*50, apple[1]*50, 50, 50)
-
-    return { "buffer": canvas.toBuffer().toString('base64') }
-};
-
-// app routs
+// post draw rout
 app.post('/draw', function(req, res){
+    res.send('Drawing request reached heroku.');
+    // extract the data from deta server
     let snake = req.body.snake,
         apple = req.body.apple,
-        dead = req.body.dead,
-        json = drawGame(snake, apple, dead);
-    res.json(json);
+        rts = req.body.rts,
+        loves = req.body.loves,
+        score = req.body.score,
+        h_score = req.body.h_score;
+    //console.log(snake, apple, rts, loves, score, h_score);
+    processGame(snake, apple, rts, loves, score, h_score);
 });
+
 app.listen((process.env.PORT || 8080), () => {
-    console.log('listening ...')
+    console.log('.......listening.......')
 });
