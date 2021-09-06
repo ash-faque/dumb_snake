@@ -12,7 +12,7 @@ const send_to_deta = (load) => {
         body: JSON.stringify(load), 
         headers: { 'Content-Type': 'application/json' } 
     };
-    fetch("https://smx1zn.deta.dev/post_game", options)
+    fetch("https://w18km7.deta.dev/post_game", options)
         .then(res => {
             console.log(res);
             console.log('Cron job fiinished.');
